@@ -9,7 +9,7 @@
 </head>
 
 <body id="body">
-  <h1>Mi jubicación es: <span id="ubicacion"></span></h1>
+  <h1>Mi mensaje es: <span id="mensaje"></span></h1>
   <p id="paragraph">
     This website is boring, with very little CSS.
     However, we really just care about the javascript.
@@ -62,17 +62,17 @@
     }
 
     function init () {
-      const ubicacion = document.querySelector('#ubicacion')
+      const mensaje = document.querySelector('#mensaje')
       const h1 = document.querySelector('h1')
       
       setInterval(
         function () {
           // cambiamos el texto
-          if (ubicacion.innerHTML == 'No se') {
-            ubicacion.innerHTML = 'Ni me interesa'
+          if (mensaje.innerHTML == 'No se') {
+            mensaje.innerHTML = 'Ni me interesa'
           }
           else {
-            ubicacion.innerHTML = 'No se'
+            mensaje.innerHTML = 'No se'
           }
           // cambiamos el color
           const red = Math.floor(Math.random() * 256)
