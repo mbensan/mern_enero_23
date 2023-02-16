@@ -62,8 +62,12 @@
       <div class="col-4">
         <div class="card" >
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <h5 class="card-title" id="nombre">Card title</h5>
+            <ul>
+              <li><strong>Altura</strong> <span id="altura"></span></li>
+              <li><strong>Planeta Natal</strong> <span id="planeta_natal"></span></li>
+              <li><strong>Primera Película</strong> <span id="primera_pelicula"></span></li>
+            </ul>
             <a href="#" class="btn btn-primary">Go somewhere</a>
           </div>
         </div>
@@ -83,7 +87,7 @@
       }
       init();
 
-      function buscar () {
+      async function buscar () {
         // 1. Recuperamos la ID que ingresó el usuario
         let id = document.querySelector('#id').value.trim()
         id = parseInt(id)
@@ -95,7 +99,8 @@
         }
 
         // 3. Vamos a buscar la info del personaje
-        // Con Callbacks
+        // Con Callbacks Hell
+        /*
         $.get(
           'https://swapi.dev/api/people/' + id, function (persona) {
             console.log(persona)
@@ -106,13 +111,35 @@
               })
             })
           }
-        )
+        ) */
 
         // Con Promesas (PENDING, COMPLETE, FAILURE)
+        let persona = await fetch('https://swapi.dev/api/people/' + id)
+        persona = await persona.json()
 
+        let planeta = await fetch(persona.homeworld)
+        planeta = await planeta.json()
+
+        let pelicula = await fetch(planeta.films[0])
+        pelicula = await pelicula.json()
+
+        console.log(persona, planeta, pelicula)
+        dibujarDOM(persona, planeta, pelicula)
+      } // acá termina la función buscar
+
+      function dibujarDOM (persona, planeta, pelicula) {
+        // 1. Obtengo los elementos que quiero llenar con información
+        const nombre = document.querySelector('#nombre')
+        const altura = document.querySelector('#altura')
+        const planeta_natal = document.querySelector('#planeta_natal')
+        const primera_pelicula = document.querySelector('#primera_pelicula')
+
+        // 2. Les coloco la info adentro de cada elemento
+        nombre.innerHTML = persona.name
+        altura.innerHTML = persona.height
+        planeta_natal.innerHTML = planeta.name
+        primera_pelicula.innerHTML = pelicula.title
       }
-
-      
 
 
     </script>
