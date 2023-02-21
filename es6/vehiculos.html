@@ -85,7 +85,7 @@
         });
         console.log('Está TODO listo!')
       }
-      init();
+      //init();
 
       async function buscar () {
         // 1. Recuperamos la ID que ingresó el usuario
@@ -141,6 +141,25 @@
         primera_pelicula.innerHTML = pelicula.title
       }
 
+      class Auto {
+
+        constructor (mar, modelo, anio, rend) {
+          // atributos del objeto
+          this.marca = mar;
+          this.modelo = modelo;
+          this.anio = anio;
+          this.rendimiento = rend;
+        }
+        // métodos de la clase
+        consumo (kms) {
+          const litros = kms / this.rendimiento
+          return `Se consumieron ${litros} litros de combustible`
+        }
+      }
+
+      const fiesta = new Auto('Ford', 'Fiesta', 2015, 14)
+      const dzire = new Auto('Suzuki', 'D-Zire', 2021, 21)
+      const ranger = new Auto('Ford', 'Ranger', 2009, 6)
 
     </script>
   </body>
