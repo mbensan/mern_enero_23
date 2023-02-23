@@ -18,6 +18,12 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
   <script type="text/babel">  // JSX
+    /* MALA FORMA (JS nativo)
+    const App = React.createElement('nav', {}, 
+      React.createElement('div', {}, 
+        React.createElement
+      )
+    ) */
 
     const App = () => 
       <section>
