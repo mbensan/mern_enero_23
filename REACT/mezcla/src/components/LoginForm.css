@@ -1,0 +1,10 @@
+#login-form {
+  margin: 1rem auto;
+  border: 2px solid orangered;
+  border-radius: 1rem;
+  display: inline-block;
+  padding: 1rem;
+}
+#login-form input {
+  font-size: 2rem;
+}

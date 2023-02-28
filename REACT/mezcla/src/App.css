@@ -73,3 +73,11 @@
   color: darkred;
   font-weight: bold;
 }
+.list li {
+  list-style-type: none;
+  margin: 0 4rem;
+  border: 2px solid purple;
+}
+.input {
+  font-size: 2rem;
+}
