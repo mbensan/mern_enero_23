@@ -85,4 +85,43 @@ input, button {
   min-height: 5rem;
   margin-bottom: 2rem;
   border: 2px solid black;
-} 
+}
+
+/* Estilos de Navtab */
+.navtab {
+  width: 800px;
+  margin: 0 auto;
+  border: 1px solid black;
+  font-size: 1.5rem;
+}
+.tabs {
+  border: 2px solid green;
+}
+.tab-item {
+  display: inline-block;
+  margin: 0.5rem;
+  border: 2px solid black;
+  padding: 0.5rem;
+  font-weight: bold;
+}
+.tab-item:hover {
+  text-decoration: underline;
+}
+.selected {
+  background-color: black;
+  color: white;
+}
+.tab-view {
+  border: 2px solid black;
+  min-height: 4rem;
+}
+
+/* Estilos de personaje */
+.personajes {
+  display: flex;
+}
+.personajes .col {
+  flex: 1;
+  border: 2px solid blue;
+  padding: 1 rem;
+}
