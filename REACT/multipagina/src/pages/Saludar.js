@@ -1,11 +1,13 @@
 import { useParams } from "react-router-dom";
 
 function Saludar() {
-  const {nombre} = useParams()
+  const {nombre, color} = useParams()
+
+  const colorLetra = color ? color : 'green'
 
   return (
     <div>
-      <h3>Buenos días {nombre}</h3>
+      <h3 style={{color: colorLetra}}>Buenos días {nombre}</h3>
     </div>
   );
 }

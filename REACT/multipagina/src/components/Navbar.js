@@ -14,19 +14,13 @@ function Navbar() {
               <Link className="nav-link active" aria-current="page" to="/">Inicio</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/contacto">Link</Link>
+              <Link className="nav-link" to="/contacto">Saludar</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/bloques">Bloques de Colores</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/saludar/Mario">Saludar a Mario</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/saludar/Luigi">Saludar a Luigi</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/saludar/Ana">Saludar a Ana</Link>
+              <Link className="nav-link" to="/buscar">Buscador de Pokemones</Link>
             </li>
           </ul>
         </div>

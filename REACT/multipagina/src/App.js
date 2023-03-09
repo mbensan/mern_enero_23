@@ -4,6 +4,8 @@ import Index from './pages/Index';
 import Contacto from './pages/Contacto';
 import Bloques from './pages/Bloques';
 import Saludar from './pages/Saludar';
+import Buscador from './pages/Buscador';
+import Pokemon from './pages/Pokemon';
 
 import Navbar from './components/Navbar';
 
@@ -21,6 +23,9 @@ function App() {
             <Route path='/contacto' element={<Contacto />} />
             <Route path='/bloques' element={<Bloques />} />
             <Route path='/saludar/:nombre' element={<Saludar />} />
+            <Route path='/saludar/:nombre/:color' element={<Saludar />} />
+            <Route path='/buscar' element={<Buscador />} />
+            <Route path='/pokemon/:id' element={<Pokemon />} />
             
           </Routes>
           <footer>
