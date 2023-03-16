@@ -14,7 +14,7 @@ app.use(direcciones_router)
 
 app.get('/', function (request, response) {
   // acá respondemos a la solicitud
-  response.send('<h2>Nuesta API está funcionando</h2>')
+  response.send('<h2>Nuestra API está funcionando</h2>')
 })
 
 

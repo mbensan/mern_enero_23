@@ -2,67 +2,58 @@ const express = require('express')
 
 const router = express.Router()
 
-let cars = require('../models/cars')
+let {Car} = require('../models/cars')
 
 // Ruta para obtener TODOS los autos
-router.get('/api/cars', (req, res) => {
+router.get('/api/cars', async (req, res) => {
+  const cars = await Car.find()
   res.json(cars)
 })
 
 // Ruta para obtener 1 auto en particular
-router.get('/api/cars/:id', (req, res) => {
+router.get('/api/cars/:id', async (req, res) => {
+  // obtengo el ID desde el parámetro de la ruta
   const id = req.params.id
-  let chosenCar;
-  for (let car of cars) {
-    if (car.id == id) {
-      chosenCar = car
-    }
+  try {
+    const car = await Car.findOne({_id: id})
+    return res.json(car)
   }
-  if (chosenCar) {
-    return res.json(chosenCar)
+  catch (error) {
+    console.log(error)
+    return res.json({error}, 404)
   }
-
-  res.json({}, 404)
 })
 
 // Ruta para agregar autos
-router.post('/api/cars', (req, res) => {
-  const last_car = cars[cars.length - 1]
-  const last_id = last_car.id
-  const new_id = last_id + 1
+router.post('/api/cars', async (req, res) => {
+  
+  const new_car = await Car.create({
+    ...req.body
+  })
 
-  const new_car = {
-    ...req.body,
-    id: new_id
-  }
-
-  cars.push(new_car)
-  console.log(req.body)
-  res.send('Auto creado')
+  res.json(new_car)
 })
 
 // Ruta para modificar un auto
-router.put('/api/cars/:id', (req, res) => {
-  res.send(`Modificando el auto de ID ${req.params.id}`)
-  const new_car = {
-    ...req.body,
-    id: req.params.id
-  }
+router.put('/api/cars/:id', async (req, res) => {
 
-  cars = cars.filter(car => car.id != req.params.id)
-  cars.push(new_car)
+  // recuperamos el ID de los parámetros de las ruta
+  const id = req.params.id
 
-  return res.send('Auto editado')
+  const car = await Car.updateOne(
+    {_id: id},
+    { ...req.body }
+  )
+
+  return res.json({})
 })
 
 // Ruta para eliminar autos
-router.delete('/api/cars/:id', (req, res) => {
+router.delete('/api/cars/:id', async (req, res) => {
   const id = req.params.id
-  console.log('cars antes', cars);
-  cars = cars.filter(car => car.id != id)
-  console.log('cars despues', cars);
-
-  res.send('Auto eliminado')
+  
+  await Car.findOneAndRemove({_id: id})
+  res.json({})
 })
 
 module.exports = router
