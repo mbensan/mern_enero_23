@@ -41,7 +41,9 @@ router.put('/api/cars/:id', async (req, res) => {
   const id = req.params.id
 
   const car = await Car.updateOne(
+    // Criterio de selección del auto a modificar
     {_id: id},
+    // Los nuevos datos de ese auto
     { ...req.body }
   )
 
