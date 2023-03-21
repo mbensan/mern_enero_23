@@ -18,6 +18,17 @@ router.post('/people', async (req, res) => {
   res.json({_id: person._id})
 })
 
+router.get('/people', async (req, res) => {
+  const people = await Person.find()
+  res.json({people: people})
+})
+
+router.get('/people/:id', async (req, res) => {
+  const id = req.params.id
+  const person = await Person.findOne({_id: id})
+  res.json({person: person})
+})
+
 
 
 module.exports = router
