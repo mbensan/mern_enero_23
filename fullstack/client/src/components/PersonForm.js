@@ -9,13 +9,12 @@ function PersonForm() {
   async function createPerson (ev) {
     // 1. Evitamos que se recargue el formulario
     ev.preventDefault()
-
-    const resp = await axios.post('http://localhost:8000/api/people', {
+    // 2. Envio la solicitud POST al servidor
+    await axios.post('http://localhost:8000/api/people', {
       name: name,
       lastName: lastName
     })
-    
-    console.log(resp.data);
+    // 3. limpio los campos del formulario
     setName('')
     setLastName('')
   }

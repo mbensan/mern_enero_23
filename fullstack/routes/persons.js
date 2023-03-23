@@ -26,7 +26,25 @@ router.get('/people', async (req, res) => {
 router.get('/people/:id', async (req, res) => {
   const id = req.params.id
   const person = await Person.findOne({_id: id})
-  res.json({person: person})
+  res.json(person)
+})
+
+router.delete('/people/:id', async (req, res) => {
+  const id = req.params.id
+  const person = await Person.deleteOne({_id: id})
+  res.json({eliminado: 'ok'})
+})
+
+router.put('/people/:id', async (req, res) => {
+  const id = req.params.id
+  const {name, lastName} = req.body
+
+  await Person.findOneAndUpdate(
+    {_id: id}, // criterio de búsqueda
+    {$set: {name: name, lastName: lastName}}  // fijamos los nuevos valores
+  )
+
+  res.json({hola: 'chao'})
 })
 
 
