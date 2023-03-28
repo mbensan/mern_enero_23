@@ -17,13 +17,13 @@ function Main() {
 
   useEffect(()=>{
     // se carga el mensaje de prueba
-    axios.get('http://localhost:8000/api')
+    axios.get(window.$api)
     .then(res => {
       console.log(res);
       setMensaje(res.data.message)
     })
     // se carga (desde el servidor) la listade personas
-    axios.get('http://localhost:8000/api/people')
+    axios.get(window.$api + '/people')
     .then(res => {
       setPeople(res.data.people)
       setLoaded(true)
@@ -48,7 +48,7 @@ function Main() {
           {loaded === true ? 
             <PeopleList people={people} eliminarDOM={eliminarDOM} /> :
             'No hay gente todavía!!!!'
-          }    
+          }
         </Col>
       </Row>
     </Container>

@@ -6,6 +6,9 @@ import reportWebVitals from './reportWebVitals';
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
+// variables globales
+window.$api = 'http://localhost:8000/api'
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
