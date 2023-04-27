@@ -6,6 +6,7 @@ import Nav from 'react-bootstrap/Nav';
 import Main from './views/Main';
 import PersonDetail from './views/PersonDetail';
 import Update from './views/Update';
+import Tareas from './views/Tareas';
 
 function App() {
   return (
@@ -13,13 +14,13 @@ function App() {
       <div className="App">
         <Nav
           activeKey="/home"
-          onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
+          onSelect={(selectedKey) => console.log(`selected ${selectedKey}`)}
         >
           <Nav.Item>
             <Nav.Link href="/home">Active</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link eventKey="link-1">Link</Nav.Link>
+            <Nav.Link href="/tareas">Tareas</Nav.Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link eventKey="link-2">Link</Nav.Link>
@@ -35,6 +36,7 @@ function App() {
             <Route path='/' element={<Main />}></Route>
             <Route path='/detail/:id' element={<PersonDetail />}></Route>
             <Route path='/edit/:_id' element={<Update />}></Route>
+            <Route path='/tareas' element={<Tareas />}></Route>
           </Routes>
         </header>
       </div>

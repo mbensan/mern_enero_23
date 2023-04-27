@@ -64,7 +64,7 @@ function num2string(num) {
   else if (num == 20) {
     return 'veinte'
   }
-  // 4. veinti-algo
+  // 4. veinti-algo 27
   else if (num <= 29) {
     const unidades = num - 20
     return 'veinti' + num2string(unidades)
@@ -81,8 +81,48 @@ function num2string(num) {
     }
     return palabras_decenas[decenas] + ' y ' + num2string(unidades)
   }
+  else if (num == 100) {
+    return 'cien'
+  }
+  // centena- -resto  167
+  else if (num <= 999) {
+    const centenas = Math.floor(num / 100) // 5
+    const resto = num - (centenas * 100)  // 76
+
+    const palabras_centenas = ['', 'ciento', 'doscientos', 'trescientos', 'cuatrocientos',
+      'quinientos', 'seiscientos', 'setecientos', 'ochocientos', 'novecientos']
+    
+    if (resto == 0) {
+      return palabras_centenas[centenas]
+    }
+    return palabras_centenas[centenas] + ' ' + num2string(resto)
+  }
+  else if (num <= 999999) {
+    const miles = Math.floor(num / 1000)
+    const resto = num - (miles * 1000)
+
+    return num2string(miles) + ' mil ' + num2string(resto)
+  }
   else {
     return 'NO IMPLEMENTADO'
   }
+}
+
+// hanoi(2, 'A', 'C')
+function hanoi (num_platos, inicio='A', fin='C') {
+  const palos = 'ABC'
+  const palo_medio = palos.replace(inicio, '').replace(fin, '')
+  // caso base
+  if (num_platos == 2) {
+    console.log("1 -> " + palo_medio)
+    console.log("2 -> " + fin)
+    console.log("1 -> " + fin)
+    return
+  }
+  // caso general
+  let platos = num_platos
+  hanoi(platos - 1, inicio, palo_medio)
+  console.log(platos + ' -> ' + fin)
+  hanoi(platos - 1, palo_medio, fin)
 }
 
